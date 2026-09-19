@@ -49,7 +49,7 @@ DEFAULT_PENGATURAN = [
     {"Parameter": "jam_datang_standar", "Nilai": "07:00", "Keterangan": "Batas Awal Jam Kedatangan"},
     {"Parameter": "jam_selesai_standar", "Nilai": "18:00", "Keterangan": "Jam Selesai Shift Kerja"},
     {"Parameter": "toleransi_menit", "Nilai": "15", "Keterangan": "Toleransi Keterlambatan (Menit)"},
-    {"Parameter": "admin_pin_hash", "Nilai": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "Keterangan": "PIN Admin SHA-256 (Default: admin123)"},
+    {"Parameter": "admin_pin", "Nilai": "11223344", "Keterangan": "PIN Admin (plain text)"},
     {"Parameter": "tema_default", "Nilai": "dark-slate", "Keterangan": "Preset Tema Visual"},
 ]
 

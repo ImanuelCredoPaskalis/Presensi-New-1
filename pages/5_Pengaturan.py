@@ -168,7 +168,7 @@ with p_left:
                 <span class="material-symbols-outlined" style="color: #c0c1ff; font-size: 22px;">security</span>
                 <div>
                   <h4 style="font-family: 'Space Grotesk'; font-size: 16px; font-weight: 700; color: #dfe2f1; margin: 0;">Keamanan & PIN Admin</h4>
-                  <p style="font-size: 11px; color: #869397; margin: 2px 0 0 0;">PIN disimpan dengan enkripsi satu arah SHA-256</p>
+                  <p style="font-size: 11px; color: #869397; margin: 2px 0 0 0;">PIN admin untuk mengakses panel pengaturan</p>
                 </div>
               </div>
             </div>
@@ -180,7 +180,7 @@ with p_left:
         if st.button("Perbarui PIN Admin", use_container_width=True):
             if len(new_pin_admin.strip()) >= 4:
                 update_admin_pin(new_pin_admin)
-                st.success("PIN Admin berhasil diubah dan dienkripsi SHA-256!")
+                st.success("PIN Admin berhasil diubah!")
             else:
                 st.error("PIN minimal 4 karakter!")
 

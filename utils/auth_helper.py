@@ -19,12 +19,12 @@ def is_admin() -> bool:
 
 
 def verify_admin_pin(input_pin: str) -> bool:
-    """Memverifikasi PIN input terhadap hash di pengaturan."""
+    """Memverifikasi PIN input terhadap PIN di pengaturan (plain text)."""
     sm = get_sheets_manager()
     settings = sm.get_pengaturan()
-    stored_hash = settings.get("admin_pin_hash", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")
-    
-    if hash_pin(input_pin) == stored_hash:
+    stored_pin = settings.get("admin_pin", "11223344")
+
+    if input_pin.strip() == str(stored_pin):
         st.session_state["is_admin_authenticated"] = True
         return True
     return False
@@ -36,7 +36,6 @@ def logout_admin():
 
 
 def update_admin_pin(new_pin: str) -> bool:
-    """Mengubah PIN admin dengan menyimpan hash barunya."""
-    new_hash = hash_pin(new_pin)
+    """Mengubah PIN admin (plain text)."""
     sm = get_sheets_manager()
-    return sm.update_pengaturan("admin_pin_hash", new_hash)
+    return sm.update_pengaturan("admin_pin", new_pin.strip())
