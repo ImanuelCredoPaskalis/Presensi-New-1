@@ -205,7 +205,7 @@
     },
     {
       "Parameter": "admin_pin_hash",
-      "Nilai": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "Nilai": "4f9f10b304cfe9b2b11fcb1387f694e18f08ea358c7e9f567434d3ad6cbd7fc4",
       "Keterangan": "PIN Admin SHA-256 (Default: admin123)"
     },
     {
