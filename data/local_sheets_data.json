@@ -1,0 +1,217 @@
+{
+  "Master_Mahasiswa": [
+    {
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Program_Studi": "Pendidikan Fisika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "AS"
+    },
+    {
+      "Nama_Mahasiswa": "Eci Rahmawati",
+      "Program_Studi": "Pendidikan Fisika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "ER"
+    },
+    {
+      "Nama_Mahasiswa": "Jasmin Putri",
+      "Program_Studi": "Pendidikan Matematika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "JP"
+    },
+    {
+      "Nama_Mahasiswa": "Kezia Amanda",
+      "Program_Studi": "Pendidikan Fisika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "KA"
+    },
+    {
+      "Nama_Mahasiswa": "Nuel Christian",
+      "Program_Studi": "Pendidikan Matematika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "NC"
+    },
+    {
+      "Nama_Mahasiswa": "Bintang Mahendra",
+      "Program_Studi": "Pendidikan Fisika",
+      "Status_Aktif": "Aktif",
+      "Avatar_Initials": "BM"
+    }
+  ],
+  "Presensi_Harian": [
+    {
+      "ID_Presensi": "PRS-2026-09-19-Audrey",
+      "Tanggal": "2026-09-19",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Program_Studi": "Pendidikan Fisika",
+      "Jam_Masuk": "07:55 WIB",
+      "Sesi_Shift": "Pagi",
+      "Jam_Ke_Kelas": "08:55 WIB",
+      "Jam_Kembali_Kelas": "-",
+      "Nama_Mata_Kuliah": "Perkuliahan",
+      "Durasi_Kelas": "-",
+      "Jam_Tugas_Luar": "08:56 WIB",
+      "Jam_Kembali_Tugas": "08:55 WIB",
+      "Keterangan_Tugas": "dsfdsf",
+      "Jam_Izin_Keluar": "-",
+      "Jam_Kembali_Izin": "08:56 WIB",
+      "Durasi_Izin": "-",
+      "Jam_Keluar": "-",
+      "Durasi_Shift": "5j 47m",
+      "Status_Terkini": "Sedang Tugas",
+      "Status_Ketepatan": "Tepat Waktu"
+    },
+    {
+      "ID_Presensi": "PRS-2026-09-19-Jasmin",
+      "Tanggal": "2026-09-19",
+      "Nama_Mahasiswa": "Jasmin Putri",
+      "Program_Studi": "Pendidikan Matematika",
+      "Jam_Masuk": "08:15 WIB",
+      "Sesi_Shift": "Pagi",
+      "Jam_Ke_Kelas": "13:00 WIB",
+      "Jam_Kembali_Kelas": "-",
+      "Nama_Mata_Kuliah": "Fisika Modern (R. 302)",
+      "Durasi_Kelas": "01j 15m",
+      "Jam_Tugas_Luar": "-",
+      "Jam_Kembali_Tugas": "-",
+      "Keterangan_Tugas": "-",
+      "Jam_Izin_Keluar": "-",
+      "Jam_Kembali_Izin": "-",
+      "Durasi_Izin": "-",
+      "Jam_Keluar": "-",
+      "Durasi_Shift": "4j 30m",
+      "Status_Terkini": "Sedang di Kelas",
+      "Status_Ketepatan": "Tepat Waktu"
+    },
+    {
+      "ID_Presensi": "PRS-2026-09-19-Bintang",
+      "Tanggal": "2026-09-19",
+      "Nama_Mahasiswa": "Bintang Mahendra",
+      "Program_Studi": "Pendidikan Fisika",
+      "Jam_Masuk": "08:00 WIB",
+      "Sesi_Shift": "Pagi",
+      "Jam_Ke_Kelas": "-",
+      "Jam_Kembali_Kelas": "-",
+      "Nama_Mata_Kuliah": "-",
+      "Durasi_Kelas": "-",
+      "Jam_Tugas_Luar": "13:30 WIB",
+      "Jam_Kembali_Tugas": "-",
+      "Keterangan_Tugas": "Ambil Modul Osiloskop di Lab Pusat",
+      "Jam_Izin_Keluar": "-",
+      "Jam_Kembali_Izin": "-",
+      "Durasi_Izin": "-",
+      "Jam_Keluar": "-",
+      "Durasi_Shift": "5j 12m",
+      "Status_Terkini": "Sedang Tugas",
+      "Status_Ketepatan": "Tepat Waktu"
+    }
+  ],
+  "Log_Aktivitas": [
+    {
+      "Timestamp": "2026-09-19 08:56:08",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Tugas Keluar",
+      "Keterangan": "Mulai Tugas: dsfdsf",
+      "Tipe_Ikon": "local_shipping"
+    },
+    {
+      "Timestamp": "2026-09-19 08:56:07",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Kembali Shift",
+      "Keterangan": "Kembali Shift: Standby di Lab Micro",
+      "Tipe_Ikon": "sync"
+    },
+    {
+      "Timestamp": "2026-09-19 08:56:05",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Tugas Keluar",
+      "Keterangan": "Mulai Tugas: dsfdsf",
+      "Tipe_Ikon": "local_shipping"
+    },
+    {
+      "Timestamp": "2026-09-19 08:55:58",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Tugas Keluar",
+      "Keterangan": "Mulai Tugas: Tugas Operasional",
+      "Tipe_Ikon": "local_shipping"
+    },
+    {
+      "Timestamp": "2026-09-19 08:55:45",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Kembali Tugas",
+      "Keterangan": "Selesai Tugas: Kembali standby di Lab",
+      "Tipe_Ikon": "task_alt"
+    },
+    {
+      "Timestamp": "2026-09-19 08:55:36",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Ke Kelas",
+      "Keterangan": "Masuk Kelas: Perkuliahan",
+      "Tipe_Ikon": "school"
+    },
+    {
+      "Timestamp": "2026-09-19 13:30:00",
+      "Nama_Mahasiswa": "Bintang Mahendra",
+      "Aksi": "Tugas Keluar",
+      "Keterangan": "Mulai Tugas: Ambil Modul Osiloskop di Lab Pusat",
+      "Tipe_Ikon": "local_shipping"
+    },
+    {
+      "Timestamp": "2026-09-19 13:00:00",
+      "Nama_Mahasiswa": "Jasmin Putri",
+      "Aksi": "Jam ke Kelas",
+      "Keterangan": "Masuk Kelas: Fisika Modern (R. 302)",
+      "Tipe_Ikon": "school"
+    },
+    {
+      "Timestamp": "2026-09-19 08:15:00",
+      "Nama_Mahasiswa": "Jasmin Putri",
+      "Aksi": "Jam Masuk",
+      "Keterangan": "Clock In: Masuk Lab Shift Pagi",
+      "Tipe_Ikon": "login"
+    },
+    {
+      "Timestamp": "2026-09-19 07:55:00",
+      "Nama_Mahasiswa": "Audrey Sabrina",
+      "Aksi": "Jam Masuk",
+      "Keterangan": "Clock In: Masuk Lab Shift Pagi & Buka Ruang Micro",
+      "Tipe_Ikon": "login"
+    }
+  ],
+  "Pengaturan": [
+    {
+      "Parameter": "lab_name",
+      "Nilai": "Lab Micro Teaching FisMat",
+      "Keterangan": "Nama Instansi Laboratorium"
+    },
+    {
+      "Parameter": "lab_location",
+      "Nilai": "Kampus 3",
+      "Keterangan": "Ruangan Pelaksanaan Praktikum"
+    },
+    {
+      "Parameter": "jam_datang_standar",
+      "Nilai": "07:00",
+      "Keterangan": "Batas Awal Jam Kedatangan"
+    },
+    {
+      "Parameter": "jam_selesai_standar",
+      "Nilai": "18:00",
+      "Keterangan": "Jam Selesai Shift Kerja"
+    },
+    {
+      "Parameter": "toleransi_menit",
+      "Nilai": "15",
+      "Keterangan": "Toleransi Keterlambatan (Menit)"
+    },
+    {
+      "Parameter": "admin_pin_hash",
+      "Nilai": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "Keterangan": "PIN Admin SHA-256 (Default: admin123)"
+    },
+    {
+      "Parameter": "tema_default",
+      "Nilai": "dark-slate",
+      "Keterangan": "Preset Tema Visual"
+    }
+  ]
+}
