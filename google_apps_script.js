@@ -48,6 +48,18 @@ function doPost(e) {
       case "getPresensi":
         return handleGetPresensi(body);
 
+      case "getMaster":
+        return handleGetMaster(body);
+
+      case "getLogs":
+        return handleGetLogs(body);
+
+      case "getPengaturan":
+        return handleGetPengaturan(body);
+
+      case "savePengaturan":
+        return handleSavePresensi(body); // reuse upsert logic
+
       default:
         return jsonResponse({ ok: false, error: "Unknown action: " + action });
     }
@@ -240,6 +252,89 @@ function handleAppendLog(body) {
 // ────────────────────────────────────────────
 function handleGetPresensi(body) {
   var sheet = getSheet_(body.sheet || "Presensi_Harian");
+  var headers = getHeaders_(sheet);
+  var lastRow = sheet.getLastRow();
+  var lastCol = sheet.getLastColumn();
+
+  if (lastRow <= 1) {
+    return jsonResponse({ ok: true, rows: [] });
+  }
+
+  var values = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+  var rows = values.map(function (r) {
+    var obj = {};
+    for (var i = 0; i < headers.length; i++) {
+      obj[headers[i]] = r[i] !== undefined ? String(r[i]) : "";
+    }
+    return obj;
+  });
+
+  return jsonResponse({ ok: true, rows: rows });
+}
+
+// ────────────────────────────────────────────
+//  Aksi: getMaster (ambil semua baris Master_Mahasiswa)
+// ────────────────────────────────────────────
+function handleGetMaster(body) {
+  var sheet = getSheet_(body.sheet || "Master_Mahasiswa");
+  var headers = getHeaders_(sheet);
+  var lastRow = sheet.getLastRow();
+  var lastCol = sheet.getLastColumn();
+
+  if (lastRow <= 1) {
+    return jsonResponse({ ok: true, rows: [] });
+  }
+
+  var values = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+  var rows = values.map(function (r) {
+    var obj = {};
+    for (var i = 0; i < headers.length; i++) {
+      obj[headers[i]] = r[i] !== undefined ? String(r[i]) : "";
+    }
+    return obj;
+  });
+
+  return jsonResponse({ ok: true, rows: rows });
+}
+
+// ────────────────────────────────────────────
+//  Aksi: getLogs (ambil baris terakhir dari Log_Aktivitas)
+// ────────────────────────────────────────────
+function handleGetLogs(body) {
+  var sheet = getSheet_(body.sheet || "Log_Aktivitas");
+  var headers = getHeaders_(sheet);
+  var lastRow = sheet.getLastRow();
+  var lastCol = sheet.getLastColumn();
+  var limit = body.limit || 50;
+
+  if (lastRow <= 1) {
+    return jsonResponse({ ok: true, rows: [] });
+  }
+
+  var totalDataRows = lastRow - 1;
+  var startRow = Math.max(2, lastRow - limit + 1);
+  var numRows = lastRow - startRow + 1;
+
+  var values = sheet.getRange(startRow, 1, numRows, lastCol).getValues();
+  // Balik urutan (terbaru di atas)
+  values.reverse();
+
+  var rows = values.map(function (r) {
+    var obj = {};
+    for (var i = 0; i < headers.length; i++) {
+      obj[headers[i]] = r[i] !== undefined ? String(r[i]) : "";
+    }
+    return obj;
+  });
+
+  return jsonResponse({ ok: true, rows: rows });
+}
+
+// ────────────────────────────────────────────
+//  Aksi: getPengaturan (ambil semua baris Pengaturan)
+// ────────────────────────────────────────────
+function handleGetPengaturan(body) {
+  var sheet = getSheet_(body.sheet || "Pengaturan");
   var headers = getHeaders_(sheet);
   var lastRow = sheet.getLastRow();
   var lastCol = sheet.getLastColumn();

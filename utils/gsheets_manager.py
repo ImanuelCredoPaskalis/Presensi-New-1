@@ -230,19 +230,24 @@ class GSheetsManager:
     # CRUD TAB: Master_Mahasiswa
     # ==========================================
     def get_master_mahasiswa(self) -> pd.DataFrame:
+        # Coba ambil dari Google Sheets via webhook
         if self.is_connected_to_gsheets:
             try:
-                ws = self.workbook.worksheet(TAB_MASTER)
-                records = ws.get_all_records()
-                df = pd.DataFrame(records)
-                for col in COLUMNS_MASTER:
-                    if col not in df.columns:
-                        df[col] = ""
-                return df[COLUMNS_MASTER]
+                result = self._post_action("getMaster", {"sheet": TAB_MASTER})
+                if isinstance(result, dict) and result.get("rows"):
+                    df = pd.DataFrame(result["rows"])
+                    for col in COLUMNS_MASTER:
+                        if col not in df.columns:
+                            df[col] = ""
+                    # Simpan ke local sebagai cache
+                    data = _read_local_data()
+                    data[TAB_MASTER] = result["rows"]
+                    _write_local_data(data)
+                    return df[COLUMNS_MASTER]
             except Exception:
                 pass
-        
-        # Local
+
+        # Fallback ke local
         data = _read_local_data()
         return pd.DataFrame(data.get(TAB_MASTER, DEFAULT_MASTER))
 
@@ -339,6 +344,10 @@ class GSheetsManager:
             result = self._post_action("getPresensi", {"sheet": TAB_PRESENSI})
             if isinstance(result, dict) and result.get("rows"):
                 df = pd.DataFrame(result["rows"])
+                # Cache ke local
+                data = _read_local_data()
+                data[TAB_PRESENSI] = result["rows"]
+                _write_local_data(data)
 
         if df is None:
             data = _read_local_data()
@@ -520,12 +529,12 @@ class GSheetsManager:
     def get_logs(self, limit: int = 10) -> list:
         if self.is_connected_to_gsheets:
             try:
-                ws = self.workbook.worksheet(TAB_LOG)
-                recs = ws.get_all_records()
-                if recs:
-                    return recs[-limit:][::-1]
+                result = self._post_action("getLogs", {"sheet": TAB_LOG, "limit": limit})
+                if isinstance(result, dict) and result.get("rows"):
+                    return result["rows"][:limit]
             except Exception:
                 pass
+        # Fallback ke local
         data = _read_local_data()
         logs = data.get(TAB_LOG, [])
         return logs[:limit]
@@ -534,6 +543,23 @@ class GSheetsManager:
     # CRUD TAB: Pengaturan
     # ==========================================
     def get_pengaturan(self) -> dict:
+        # Coba ambil dari Google Sheets via webhook
+        if self.is_connected_to_gsheets:
+            try:
+                result = self._post_action("getPengaturan", {"sheet": TAB_PENGATURAN})
+                if isinstance(result, dict) and result.get("rows"):
+                    res = {}
+                    for p in result["rows"]:
+                        res[p.get("Parameter")] = p.get("Nilai")
+                    # Cache ke local
+                    data = _read_local_data()
+                    data[TAB_PENGATURAN] = result["rows"]
+                    _write_local_data(data)
+                    return res
+            except Exception:
+                pass
+
+        # Fallback ke local
         data = _read_local_data()
         p_list = data.get(TAB_PENGATURAN, DEFAULT_PENGATURAN)
         res = {}
@@ -554,6 +580,14 @@ class GSheetsManager:
             p_list.append({"Parameter": key, "Nilai": str(value), "Keterangan": ""})
         data[TAB_PENGATURAN] = p_list
         _write_local_data(data)
+
+        # Sync ke Google Sheets jika online
+        if self.is_connected_to_gsheets:
+            self._post_action("savePengaturan", {
+                "sheet": TAB_PENGATURAN,
+                "row": {"Parameter": key, "Nilai": str(value), "Keterangan": ""},
+                "key_fields": ["Parameter"],
+            })
         return True
 
 
